@@ -94,8 +94,8 @@ function main(){
         console.log("added watercaustics");
 		
 		sim.scene.add(flooring = loadRequest.objects[2]);
-		flooring.children[1].material.map.repeat.height = 3;
-		flooring.children[1].material.map.repeat.width = 3;
+		flooring.children[0].material.map.repeat.height = 3;
+		flooring.children[0].material.map.repeat.width = 3;
 		console.log("added flooring");
 		
 		sim.scene.add(litterbox = loadRequest.objects[3]);
