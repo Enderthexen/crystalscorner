@@ -7,6 +7,7 @@
 </head><body><script>
 if (!window.altspace || !window.altspace.inClient) document.write('<h3>To view this example, please open this page in <a href="http://altvr.com"> AltspaceVR </a></h3>');
 
+var CrystalsCorner = (function() {
 var sim = altspace.utilities.Simulation();
 var config = { authorId: "WACOMalt", appId: "Crystal", baseRefUrl: "https://altspacesdk-crystals-corner.firebaseio.com/"};
 var sceneSync;
@@ -327,6 +328,16 @@ function main(){
 	sim.scene.position.z = -1.320;
 	animate();
 };
+
+return { start: start };
+}());
+
+altspace.getEnclosure().then(function (enclosure) {
+	enclosure.requestFullspace().then(function () {
+		CrystalsCorner.start();
+	});
+})
+
 </script>
 <a id="doorpink" href="altspace://account.altvr.com/api/spaces/the-welcome-space"></a></div>
 <a id="doorgreen" href="altspace://account.altvr.com/api/events/540061100167660072"></a></div>
