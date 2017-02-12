@@ -90,7 +90,7 @@ function main(){
         watercausticsMat.map.wrapT = THREE.RepeatWrapping;
         watercausticsMat.map.wrapS = THREE.RepeatWrapping;
         watercausticsMat.map.repeat = new THREE.Vector2(4,4);
-        watercaustics.children[1].material = watercausticsMat;
+        watercaustics.children[0].material = watercausticsMat;
         console.log("added watercaustics");
 		
 		sim.scene.add(flooring = loadRequest.objects[2]);
