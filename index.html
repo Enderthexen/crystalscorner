@@ -113,8 +113,8 @@ function main(){
 		console.log("added carpet cap in theater room");
 		
 		sim.scene.add(stairs = loadRequest.objects[6]);
-		stairs.children[1].material.map.repeat.height = 2;
-		stairs.children[1].material.map.repeat.width = 2;
+		stairs.children[0].material.map.repeat.height = 2;
+		stairs.children[0].material.map.repeat.width = 2;
 		console.log("added carpet to theater room");
 		
 		sim.scene.add(htfloorbedroom = loadRequest.objects[7]);
@@ -148,8 +148,8 @@ function main(){
 		christmaslightsMat.map.wrapT = THREE.RepeatWrapping;
 		christmaslightsMat.map.wrapS = THREE.RepeatWrapping;
 		sim.scene.add(christmaslights);
-		christmaslights.children[1].material = christmaslightsMat;
-		christmaslights.children[1].material.map.repeat.width = 12;
+		christmaslights.children[0].material = christmaslightsMat;
+		christmaslights.children[0].material.map.repeat.width = 12;
 		console.log("added christmaslights");
 		
 		sim.scene.add(bar4 = loadRequest.objects[20]);
