@@ -26,11 +26,11 @@ var shotsLoop = new Howl({src: ['assets/shots.ogg'], volume: 0.5});
 var waterMat;
 
 (function setup(){
-	//altspace.getThreeJSTrackingSkeleton().then(function(skeleton){
-		//sim.scene.add(skeleton);
-		//headTrack = skeleton.getJoint("Head");
-		//neckTrack = skeleton.getJoint("Neck");
-		//hipsTrack = skeleton.getJoint("Hips");
+	altspace.getThreeJSTrackingSkeleton().then(function(skeleton){
+		sim.scene.add(skeleton);
+		headTrack = skeleton.getJoint("Head");
+		neckTrack = skeleton.getJoint("Neck");
+		hipsTrack = skeleton.getJoint("Hips");
 		altspace.getEnclosure().then(function(enclosure){
 			ppm = enclosure.pixelsPerMeter;
 			sim.scene.scale.set(ppm,ppm,ppm);
@@ -40,7 +40,7 @@ var waterMat;
 				main();
 			});
 		});
-	//});
+	});
 })();
 
 function main(){
