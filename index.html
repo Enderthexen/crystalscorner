@@ -286,7 +286,7 @@ function main(){
 	console.log("created skysphere");
 
 	function DrawPic(file, wd, ht, posX, posY, posZ, deg){
-		new THREE.TextureLoader().load("images/" + file + ".jpg", function(tex){ //change folder with pictures here
+		new THREE.TextureLoader().load("assets/images/" + file + ".jpg", function(tex){ //change folder with pictures here
 			var pic = new THREE.Mesh(new THREE.PlaneGeometry(wd, ht), new THREE.MeshBasicMaterial({map: tex}));
 			pic.position.set(posX, posY, posZ);
 			pic.rotation.y = THREE.Math.degToRad(deg);
