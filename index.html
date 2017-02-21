@@ -4,6 +4,7 @@
 <script src="https://cdn.rawgit.com/mrdoob/three.js/r76/examples/js/loaders/OBJLoader.js"></script>
 <script src="https://sdk.altvr.com/libs/altspace.js/0.26.3/altspace.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.0/howler.min.js"></script>
+<script src="./assets/ColladaLoader.js"></script>
 </head><body><script>
 if (!window.altspace || !window.altspace.inClient) document.write('<h3>To view this example, please open this page in <a href="http://altvr.com"> AltspaceVR </a></h3>');
 
@@ -14,6 +15,25 @@ var sceneSync;
 var models = ["doorpink", "water2", "flooring", "litterbox", "litter", "flooringcap", "stairs",
 	"htfloorbedroom", "pooldonut", "shots", "curtain1", "curtain2", "kraken", "krakenglass", "krakendarkglass", "krakencap", "mcbed", "doorgreen", "christmaslights", "poop", "bar4", "barcenter4", "bardoor4", "ropes"
 ];
+
+var colladaLoader = new THREE.ColladaLoader();
+
+colladaLoader.load('./assets/chair.dae', function(result)
+{
+	var throne = result.scene.children[0];
+	throne.rotation.z = THREE.Math.degToRad(0);
+	throne.rotation.y = THREE.Math.degToRad(-90);
+	throne.rotation.x = THREE.Math.degToRad(0);
+	throne.scale.set(0.5, 0.5, 0.5);
+	throne.position.y = -2.6;
+	throne.position.x = 15.9;
+	throne.position.z = -15.13;
+	var throne_parent = new THREE.Object3D();
+	throne.rotation.y = THREE.Math.degToRad(-45)
+	throne_parent.add(throne);
+	sim.scene.add(throne_parent);
+});
+
 var animateTick = 0;
 var poolDonutBasePosition = [-4.924, -2.635, 7.806];
 var duckyBasePosition = [-5.5, -2.636, 1.349];
@@ -58,22 +78,7 @@ function main(){
 	
 	function onLoaded(){
 		console.log("loading models complete, running onLoaded");
-		
-		sim.scene.add(doorpink = loadRequest.objects[0]);
-		doorpink.position.set(5.76, -1.739, -5.08);
-		doorpink.rotation.y = THREE.Math.degToRad(130.603);
-		doorpink.addEventListener("cursorup", function(){
-			document.getElementById("doorpink").click();
-		});
-		console.log("added doorpink");
-		
-		sim.scene.add(doorgreen = loadRequest.objects[17]);
-		doorgreen.position.set(6.574, -1.739, -3.838);
-		doorgreen.rotation.y = THREE.Math.degToRad(116.896);
-		doorgreen.addEventListener("cursorup", function(){
-			document.getElementById("doorgreen").click();
-		});
-		console.log("added doorgreen");
+
 		
 		sim.scene.add(water2 = loadRequest.objects[1]);
 		water2.traverse(function (obj) { if (obj.material && obj.material.map) { waterMat = obj.material; } });
@@ -244,7 +249,7 @@ function main(){
 			});
 			object3d.addEventListener('cursordown', function() {
 					if(!value || value == "stop"){
-						if(displayName == "Crystal") clickRef.set("playWithSound")
+						if(displayName == "Crystal" || displayName == "Jacob") clickRef.set("playWithSound")
 						else clickRef.set("play");
 						
 					};
@@ -279,11 +284,11 @@ function main(){
 	
 	var sphereGeo1 = new THREE.SphereGeometry(400, 20, 20);
 	var sphereMaterial1 = new THREE.MeshBasicMaterial( { 
-		map: THREE.ImageUtils.loadTexture( "assets/skysphere.jpg" ), 
+		map: THREE.ImageUtils.loadTexture( "assets/sky4.jpg" ), 
 		side: THREE.BackSide } );
 	sphereMesh1 = new THREE.Mesh(sphereGeo1, sphereMaterial1);
 	sim.scene.add(sphereMesh1);
-	sphereMesh1.rotation.y = -90;
+	sphereMesh1.rotation.y = -110;
 	console.log("created skysphere");
 
 	function DrawPic(file, wd, ht, posX, posY, posZ, deg){
@@ -334,11 +339,9 @@ function main(){
 
 altspace.getEnclosure().then(function (enclosure) {
 	enclosure.requestFullspace().then(function () {
-		CrystalsCorner.start();
+		//CrystalsCorner.start();
 	});
 })
 
 </script>
-<a id="doorpink" href="altspace://account.altvr.com/api/spaces/the-welcome-space"></a></div>
-<a id="doorgreen" href="altspace://account.altvr.com/api/events/540061100167660072"></a></div>
 </body></html>
