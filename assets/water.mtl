@@ -1,7 +1,0 @@
-newmtl waterSG
-illum 4
-Kd 1 1 1
-Ka 0.50 0.50 0.50
-Tf 0.43 0.43 0.43
-Ni 1.00
-map_Kd waterbottom.png

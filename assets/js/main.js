@@ -89,8 +89,8 @@ function loadObj(){
 		baseUrl: "assets/models"
 	});
 	loadRequest = new multiloader.LoadRequest();
-	["doorpink", "water2", "flooring", "litterbox", "litter", "flooringcap", "stairs",
-	"htfloorbedroom", "pooldonut", "shots", "curtain1", "curtain2", "kraken", "krakenglass", "krakendarkglass", "krakencap", "mcbed", "doorgreen", "christmaslights", "poop", "bar4", "barcenter4", "bardoor4", "ropes",
+	["water2", "flooring", "litterbox", "litter", "flooringcap", "stairs",
+	"htfloorbedroom", "pooldonut", "shots", "curtain1", "curtain2", "kraken", "krakenglass", "krakendarkglass", "krakencap", "mcbed", "christmaslights", "poop", "bar4", "barcenter4", "bardoor4", "ropes",
 	].forEach(function(name) {
 		loadRequest.objUrls.push(name + ".obj");
 		loadRequest.mtlUrls.push(name + ".mtl");
@@ -113,7 +113,7 @@ function onLoaded() {
 
 	loadShots();
 
-	sim.scene.add(water2 = loadRequest.objects[1]);
+	sim.scene.add(water2 = loadRequest.objects[0]);
 	water2.traverse(function(obj) {
 		if (obj.material && obj.material.map) {
 			waterMat = obj.material;
@@ -136,11 +136,11 @@ function onLoaded() {
 	watercausticsMat.map.repeat = new THREE.Vector2(4, 4);
 	watercaustics.children[0].material = watercausticsMat;
 
-	sim.scene.add(flooring = loadRequest.objects[2]);
+	sim.scene.add(flooring = loadRequest.objects[1]);
 	flooring.children[0].material.map.repeat.height = 3;
 	flooring.children[0].material.map.repeat.width = 3;
 
-	sim.scene.add(litterbox = loadRequest.objects[3]);
+	sim.scene.add(litterbox = loadRequest.objects[2]);
 	litterbox.position.set(13.607, -2.621, 12.891);
 	litterbox.rotation.y = THREE.Math.degToRad(90);
 	sim.scene.add(litter = loadRequest.objects[4]);
@@ -150,26 +150,26 @@ function onLoaded() {
 	poop.position.set(13.581, -2.528, 12.82);
 	poop.rotation.y = THREE.Math.degToRad(75);
 
-	sim.scene.add(flooringcap = loadRequest.objects[5]);
+	sim.scene.add(flooringcap = loadRequest.objects[4]);
 
-	sim.scene.add(stairs = loadRequest.objects[6]);
+	sim.scene.add(stairs = loadRequest.objects[5]);
 	stairs.children[0].material.map.repeat.height = 2;
 	stairs.children[0].material.map.repeat.width = 2;
 
-	sim.scene.add(htfloorbedroom = loadRequest.objects[7]);
+	sim.scene.add(htfloorbedroom = loadRequest.objects[6]);
 	htfloorbedroom.position.set(0, -0.005, 0);
 
-	sim.scene.add(pooldonut = loadRequest.objects[8]);
+	sim.scene.add(pooldonut = loadRequest.objects[7]);
 	pooldonut.position.set(poolDonutBasePosition[0], poolDonutBasePosition[1], poolDonutBasePosition[2]);
 
-	curtain1 = loadRequest.objects[10];
-	curtain1.add(curtain2 = loadRequest.objects[11]);
+	curtain1 = loadRequest.objects[9];
+	curtain1.add(curtain2 = loadRequest.objects[10]);
 	sim.scene.add(curtain1);
 
-	kraken = loadRequest.objects[12];
-	kraken.add(krakenglass = loadRequest.objects[13]);
-	kraken.add(krakendarkglass = loadRequest.objects[14]);
-	kraken.add(krakencap = loadRequest.objects[15]);
+	kraken = loadRequest.objects[11];
+	kraken.add(krakenglass = loadRequest.objects[12]);
+	kraken.add(krakendarkglass = loadRequest.objects[13]);
+	kraken.add(krakencap = loadRequest.objects[14]);
 	sim.scene.add(kraken);
 	var kraken2 = kraken.clone();
 	kraken2.scale.set(0.2, 0.2, 0.2);
@@ -205,11 +205,11 @@ function onLoaded() {
 	kraken6.rotation.y = THREE.Math.degToRad(-200);
 	sim.scene.add(kraken6);
 
-	mcbed = loadRequest.objects[16];
+	mcbed = loadRequest.objects[15];
 	sim.scene.add(mcbed);
 	mcbed.position.set(7.371, -3.621, -10.396);
 
-	christmaslights = loadRequest.objects[18];
+	christmaslights = loadRequest.objects[16];
 	christmaslightsMat = new THREE.MeshBasicMaterial({
 		map: LoadTexture("assets/christmaslights.png"),
 		transparent: true
@@ -220,13 +220,13 @@ function onLoaded() {
 	christmaslights.children[0].material = christmaslightsMat;
 	christmaslights.children[0].material.map.repeat.width = 12;
 
-	var barCollision = new NativeComponent('n-mesh-collider', {type: "environment", convex: false}, loadRequest.objects[20]);
-	sim.scene.add(bar4 = loadRequest.objects[20]);
-	var barCenter = new NativeComponent('n-mesh-collider', {type: "environment", convex: false}, loadRequest.objects[21]);
-	sim.scene.add(barcenter4 = loadRequest.objects[21]);
-	sim.scene.add(bardoor4 = loadRequest.objects[22]);
+	var barCollision = new NativeComponent('n-mesh-collider', {type: "environment", convex: false}, loadRequest.objects[18]);
+	sim.scene.add(bar4 = loadRequest.objects[18]);
+	var barCenter = new NativeComponent('n-mesh-collider', {type: "environment", convex: false}, loadRequest.objects[19]);
+	sim.scene.add(barcenter4 = loadRequest.objects[19]);
+	sim.scene.add(bardoor4 = loadRequest.objects[20]);
 
-	sim.scene.add(ropes = loadRequest.objects[23]);
+	sim.scene.add(ropes = loadRequest.objects[21]);
 
 	sim.scene.traverse( function(child) {
 		child.userData.altspace = {collider: {enabled: false}};
@@ -330,7 +330,7 @@ function loadShots(){
 	};
 
 	function loadShotModel() {
-		var shots = loadRequest.objects[9];
+		var shots = loadRequest.objects[8];
 		shots.addBehaviors(altspace.utilities.behaviors.Object3DSync(), shotsBehavior);
 		sim.scene.add(shots);
 		return shots;
