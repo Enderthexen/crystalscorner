@@ -12,5 +12,5 @@
  **/
 
 return array(
-    'js' => array('//assets/js/aframe.min.js', '//assets/js/altspace.min.js', '//assets/js/UltimateLoader.min.js', '//assets/js/howler.min.js', '//assets/js/JSNativeComponents.js', '//assets/js/main.js')
+    'js' => array('//assets/js/aframe.min.js', '//assets/js/altspace-0.28.1-custom.js', '//assets/js/UltimateLoader.min.js', '//assets/js/howler.min.js', '//assets/js/JSNativeComponents.js', '//assets/js/main.js')
 );
