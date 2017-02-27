@@ -1,7 +1,0 @@
-newmtl door101:lambert2SG
-illum 4
-Kd 1.00 1.00 1.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd door101.png
-Ni 1.00
