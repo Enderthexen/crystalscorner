@@ -1,6 +1,6 @@
 if (!window.altspace || !window.altspace.inClient) document.write('<h3>Hey foo, getcho self AltspaceVR! <a href="http://altvr.com"> AltspaceVR </a></h3>');
 
-var sim = altspace.utilities.Simulation();
+var sim = altspace.utilities.Simulation({rendererOptions: {profile: false, initialSerializationBufferSize: 9100000}});
 sim.scene.position.set(-5.683, 4.145, -1.320);
 
 var userId;
