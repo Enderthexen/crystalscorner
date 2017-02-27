@@ -12,10 +12,10 @@
   </asset>
   <library_images>
     <image id="Duke_Throne_D_png" name="Duke_Throne_D_png">
-      <init_from>Duke_Throne_D.png</init_from>
+      <init_from>Duke_Throne_D.jpg</init_from>
     </image>
     <image id="Duke_Throne_D_tga" name="Duke_Throne_D_tga">
-      <init_from>Duke_Throne_D.png</init_from>
+      <init_from>Duke_Throne_D.jpg</init_from>
     </image>
   </library_images>
   <library_effects>

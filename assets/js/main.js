@@ -99,7 +99,7 @@ function loadObj(){
 }
 
 function loadSky(){
-	var skyGeo = new THREE.SphereGeometry(400, 20, 20);
+	var skyGeo = new THREE.SphereGeometry(400, 8, 8);
 	var skyMat = new THREE.MeshBasicMaterial({
 		map: LoadTexture("assets/sky4.jpg"),
 		side: THREE.BackSide
